@@ -1,0 +1,210 @@
+/* COMMON */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #CAD5E2;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+/* Alert messages */
+.alert {
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin-top: 15px;
+  align-self: flex-start;
+}
+
+.error-dailog {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+.success-dailog {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+
+
+/* LOGIN & SIGNUP COMPONENTS */
+.login-signup-header {
+  font-weight: 600;
+  font-size: 30px;
+  color: #03c6c7;
+}
+.login-form {
+  background-color: #fff;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  margin: 50px auto;
+  border-radius: 6px;
+}
+.field {
+  width: 100%;
+}
+.field input,
+select,
+textarea {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  border-radius: 6px;
+  width: 100%;
+  height: 40px;
+  margin-top: 20px;
+  padding: 5px;
+  font-size: 15px;
+}
+.field input:focus {
+  outline: none;
+}
+.field button {
+  width: 100%;
+  margin-top: 20px;
+  background: #03c6c7;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 20px;
+  padding: 9px;
+  border: none;
+  outline: none;
+}
+.field button:hover {
+  cursor: pointer;
+}
+.field button:disabled {
+  cursor: not-allowed;
+}
+
+/* Property post card components */
+
+.movie-card {
+  background: #fff;
+  padding: 0;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #f1f1f1;
+  display: flex;
+  flex-direction: column;
+}
+.movie-card:not(:first-child) {
+  margin-top: 20px;
+}
+.movie-card:last-child {
+  margin-bottom: 50px;
+}
+.movie-card .left {
+  flex: 1;
+}
+.movie-card .left img {
+  height: 250px;
+}
+.movie-card .right {
+  position: relative;
+  flex: 10;
+}
+.movie-card .title {
+  padding: 10px 20px;
+  font-size: 25px;
+  font-weight: 600;
+}
+.movie-card .plot {
+  margin-top: 20px;
+  padding: 0 20px;
+}
+
+.settings {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  padding: 30px;
+  border-radius: 6px;
+  margin-top: 50px;
+  margin-left: 400px;
+  width: 30%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.settings .img-container {
+  display: flex;
+  margin-bottom: 40px;
+  justify-content: center;
+}
+.settings .img-container img {
+  height: 100px;
+}
+.main-container {
+  box-sizing: border-box;
+  padding: 30px;
+}
+
+.user-text {
+  font-size: 20px;
+  font-weight: bold;
+}
+.settings .btn-grp {
+  display: flex;
+  flex-direction: column;
+}
+.settings button {
+  border-radius: 6px;
+  padding: 10px;
+  width: fit-content;
+  font-size: 16px;
+  border-radius: 3px;
+  margin-top: 20px;
+}
+.settings button:hover {
+  cursor: pointer;
+}
+.settings button:focus {
+  outline: none;
+}
+.settings .edit-btn {
+  border: 1px solid #ef7917;
+  box-sizing: border-box;
+  color: #ef7917;
+}
+.settings .save-btn {
+  background: #ef7917;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+}
+.settings .go-back {
+  color: #ef7917;
+  margin-top: 7px;
+  font-size: 13px;
+}
+.settings .go-back:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.settings .field {
+  margin-bottom: 10px;
+}
+.settings .field .field-label {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  color: #9e9e9e;
+  padding: 5px 0;
+}
+.settings .field input {
+  margin-top: 6px;
+}
