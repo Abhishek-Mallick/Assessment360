@@ -1,0 +1,5 @@
+Django
+django-cleanup
+django-froala-editor
+sqlparse
+
