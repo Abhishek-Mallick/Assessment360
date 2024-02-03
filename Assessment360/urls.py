@@ -1,4 +1,4 @@
-"""eLMS URL Configuration
+"""Assessment360 URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.0/topics/http/urls/
@@ -22,9 +22,9 @@ from main import views
 from froala_editor import views as froala_views
 
 
-admin.site.site_header = "eLMS Administration"
-admin.site.site_title = "eLMS Administration Portal"
-admin.site.index_title = "Welcome to eLMS Administration Portal"
+admin.site.site_header = "Assessment360 Administration"
+admin.site.site_title = "Assessment360 Administration Portal"
+admin.site.index_title = "Welcome to Assessment360 Administration Portal"
 
 
 urlpatterns = [

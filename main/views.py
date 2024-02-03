@@ -196,6 +196,8 @@ def course_page_faculty(request, code):
 def error(request):
     return render(request, 'error.html')
 
+def plag(request):
+    return render(request, 'plag.html')
 
 # Display user profile(student & faculty)
 def profile(request, id):
@@ -650,7 +652,6 @@ def changePassword(request):
             return render(request, 'main/changePassword.html', {'student': student})
     else:
         return redirect('std_login')
-
 
 def changePasswordFaculty(request):
     if request.session.get('faculty_id'):

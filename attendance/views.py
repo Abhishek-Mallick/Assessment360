@@ -13,6 +13,7 @@ def attendance(request, code):
         return render(request, 'attendance/attendance.html', {'students': students, 'course': course, 'faculty': Faculty.objects.get(course=course)})
 
 
+
 def createRecord(request, code):
     if is_faculty_authorised(request, code):
         if request.method == 'POST':

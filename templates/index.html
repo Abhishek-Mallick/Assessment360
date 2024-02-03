@@ -23,7 +23,7 @@
       <nav class="navbar sticky-top navbar-expand-lg navbar-dark navbar-mod">
          <div class="container-fluid">
             <a class="navbar-brand fw-bold fs-5 px-2 py-1" href="/admin" target="_blank" data-bs-toggle="tooltip"
-               data-bs-placement="bottom" title="Access admin panel">elms</a>
+               data-bs-placement="bottom" title="Access admin panel">Assessment360</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
                aria-controls="navbarColor01" aria-expanded="true" aria-label="Toggle navigation">
             <span class=" navbar-toggler-icon"></span>
@@ -41,6 +41,10 @@
                   <li class="nav-item">
                      <a class="nav-link active fw-bold" href="{% block allCourses %}{% endblock %}" data-bs-toggle="tooltip"
                         data-bs-placement="bottom" title="Show all courses">Courses</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link active fw-bold" href="/plag" data-bs-toggle="tooltip"
+                        data-bs-placement="bottom" title="Show all courses">Plag Check</a>
                   </li>
                   <li class="nav-item">
                      <a class="nav-link active fw-bold" href="{% url 'std_logout' %}" data-bs-toggle="tooltip"

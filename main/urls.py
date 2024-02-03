@@ -48,5 +48,6 @@ urlpatterns = [
     path('changePhotoFaculty/', views.changePhotoFaculty,
          name='changePhotoFaculty'),
     path('search/', views.search, name='search'),
-    path('error/', views.error, name='error'),
+    path('error/', views.error, name='error'), 
+    path('plag/', views.plag, name='plag'),
 ]

@@ -63,12 +63,12 @@ h2 {
   margin: 0;
   padding: 0;
   font-weight: bold;
-  color: #222;
+  color: #727068;
   font-size: 30px;
 }
 
 .main {
-  background: #f8f8f8;
+  background: #f6f2e8;
   padding: 150px 0;
 }
 
@@ -79,8 +79,8 @@ h2 {
 body {
   font-size: 14px;
   line-height: 1.8;
-  color: #222;
-  background: #f8f8f8;
+  color: #727068;
+  /* background: hsl(0, 0%, 0%); */
   font-weight: 300;
 }
 
@@ -227,19 +227,19 @@ input:-moz-placeholder {
   color: #999;
 }
 input:focus {
-  border-bottom: 1px solid #222;
+  border-bottom: 1px solid #727068;
 }
 input:focus::-webkit-input-placeholder {
-  color: #222;
+  color: #727068;
 }
 input:focus::-moz-placeholder {
-  color: #222;
+  color: #727068;
 }
 input:focus:-ms-input-placeholder {
-  color: #222;
+  color: #727068;
 }
 input:focus:-moz-placeholder {
-  color: #222;
+  color: #727068;
 }
 
 label {
@@ -251,7 +251,7 @@ label {
   -webkit-transform: translateY(-50%);
   -o-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
-  color: #222;
+  color: #727068;
 }
 
 .signin-content {

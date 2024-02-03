@@ -1,6 +1,6 @@
 {% extends 'index.html' %}
 {% load static %}
-{% block title %} {{ course.name }} | eLMS {% endblock title %}
+{% block title %} {{ course.name }} | Assessment360 {% endblock title %}
 {% block profile %}
 {% url 'profile' student.student_id %}
 {% endblock %}
@@ -19,7 +19,7 @@
    <div class="container shadow-sm">
       <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
          <ol class="breadcrumb p-3">
-            <li class="breadcrumb-item fw-bold"><a style="color: rgb(10, 10, 48)" href="{% url 'myCourses' %}">My
+            <li class="breadcrumb-item fw-bold"><a style="color: #727068" href="{% url 'myCourses' %}">My
                Courses</a>
             </li>
             <li class="breadcrumb-item fw-bold animate__animated animate__backInRight"><a class="breadcrumb-item active"
@@ -61,7 +61,7 @@
       <!-- course name ends -->
       <!-- announcement section starts -->
       <div class="rounded p-3 m-3 shadow border border-top-0 border-end-0 border-bottom-0 border-primary border-5">
-         <div class="fw-bold animate__animated animate__zoomInDown fs-5 text-center border-bottom border-1 mb-2 py-2" style="color: rgb(10, 10, 48);"><img src="{% static 'images/icon/megaphone.png' %}"
+         <div class="fw-bold animate__animated animate__zoomInDown fs-5 text-center border-bottom border-1 mb-2 py-2" style="color: #727068;"><img src="{% static 'images/icon/megaphone.png' %}"
             alt="" style="height:1.5rem;vertical-align: text-top"><span style="margin-right: 0.6rem;"></span>Announcement
          </div>
          <div>
@@ -82,7 +82,7 @@
       <!-- announcement section ends -->
       <!-- assignment section starts -->
       <div class="rounded p-3 m-3 shadow border border-top-0 border-bottom-0 border-end-0 border-danger border-5 mb-2">
-         <div class="fw-bold fs-5 text-center animate__animated animate__zoomInDown border-bottom border-1 mb-2 py-2" style="color: rgb(10, 10, 48);"><img src="{% static 'images/icon/open-book.png' %}"
+         <div class="fw-bold fs-5 text-center animate__animated animate__zoomInDown border-bottom border-1 mb-2 py-2" style="color: #727068;"><img src="{% static 'images/icon/open-book.png' %}"
             alt="" style="height:1.5rem; vertical-align: text-top"><span style="margin-right: 0.6rem;"></span>Assignment</div>
          <div >
             {% for assignment in assignments %}
@@ -113,7 +113,7 @@
       <!-- course material section starts -->
       <div class="rounded p-3 m-3 shadow border border-top-0 border-bottom-0 border-warning border-end-0 border-5" id="material">
          <!-- section title -->
-         <div class="fw-bold animate__animated animate__zoomInDown fs-5 text-center border-bottom border-1 mb-2 py-2" style="color: rgb(10, 10, 48);"><img src="{% static 'images/icon/folder.png' %}"
+         <div class="fw-bold animate__animated animate__zoomInDown fs-5 text-center border-bottom border-1 mb-2 py-2" style="color: #727068;"><img src="{% static 'images/icon/folder.png' %}"
             alt="" style="height:1.5rem;vertical-align: text-top"><span style="margin-right: 0.6rem;"></span>Course Material</div>
          <!-- section title ends -->
          <div>
