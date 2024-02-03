@@ -1,18 +1,116 @@
-{% extends 'index.html' %}
-{% load static %}
-{% block title %} {{ course.name }} | Assessment360 {% endblock title %}
-{% block profile %}
-{% url 'profile' student.student_id %}
-{% endblock %}
-{% block user %}
-{{student.name}}
-{% endblock user %}
-{% block courses %}
-{% url 'myCourses' %}
-{% endblock courses %}
-{% block allCourses %}
-{% url 'courses' %}
-{% endblock allCourses %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="widht=device-width, initial-scale=1.0"/>
+    <!-- Font Awesome 5.15.1 CSS -->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css'>
+    <title>Plagiarism Checker</title>
+  </head>
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+    @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"); 
 
-<p>Plag template</p>
+
+  body{
+      height: 100vh;
+      background-color: black;
+      background-image: url("{{ url_for('static', filename='background.png') }}");
+      background-size: cover;
+      background-position: center;
+  }
+  li{
+    list-style: none;
+  }
+</style>
+
+
+   
+<body>
+ 
+<div class="ct" id="t1">
+  <div class="ct" id="t2">
+    <div class="ct" id="t3">
+      <div class="ct" id="t4">
+         <div class="ct" id="t5">
+          
+          <div class="page" id="p1">
+            <form action="/report" method="POST">
+
+
+              <center>
+              <h1>Plagiarism Checker</h1>
+
+              <textarea id="area" placeholder="Enter your Text Here" plac for="fname" name='text' rows="200" cols="100"></textarea>
+              
+              <div class="container">
+              <h3 class="result">
+                <span id="word">0</span> Words and
+                  <span id="char">0</span> Characters
+              </h3>
+              </div>
+
+              <script>
+                let area = document.getElementById('area');
+                let char = document.getElementById('char');
+                let word = document.getElementById('word');
+          
+                area.addEventListener('input', function () {
+                    // count characters 
+                    let content = this.value;
+                    char.textContent = content.length;
+          
+                    content.trim();
+                    console.log(content);
+          
+                    let wordList = content.split(/\s/);
+          
+                    let words = wordList.filter(function (element) {
+                        return element != "";
+                    });
+          
+                    // count words 
+                    word.textContent = words.length;
+                });
+            </script>
+
+              <button type="Submit" value="Send">Check Plagiarism</button>
+              <br>
+              <a>You will be redirected once your report is generated.</a>
+              <br>
+              <a>Time to generate report depends on length of text.</a>
+        
+               
+              
+              </center>
+        
+              
+
+            </form>
+          </div>
+          <div class="page" id="p2">
+            <section class="icon fafa-keyboard-oo"><span class="title">ABOUT
+              <br>
+              <p>The project “Plagiarism Checker” is to solve the problem of plagiarism which is caused by not giving proper citations/credits to original authors. The project includes information about types of plagiarism experienced by respondents. We conclude that plagiarism detection is necessary in academics and research organizations. With the evolution of the internet and the need for information the plagiarism continues to be a concern. The system proposed has the ability to detect not only that there is plagiarism but also the probabilities of the existence of each type of plagiarism. This is a generic project because still it is enhanced, and those things will be seen in future enhancement.</p>
+
+            </span></section>
+          </div>  
+
+          <div class="page" id="p4">
+=
+          </div> 
+          <div class="page" id="p5">
+          </div> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+      
+      </div>
+
+  </body>
+</html>
