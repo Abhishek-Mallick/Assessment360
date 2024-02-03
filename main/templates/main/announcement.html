@@ -1,0 +1,51 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %} {{ course.name }} | Assessment360 {% endblock title %}
+{% block profile %}
+{% url 'profile' faculty.faculty_id %}
+{% endblock %}
+{% block user %}
+{{faculty.name}}
+{% endblock user %}
+{% block allCourses %}
+{% url 'courses' %}
+{% endblock %}
+{% block courses %}
+{% url 'facultyCourses' %}
+{% endblock courses %}
+{% block content %}
+<!-- navigation links -->
+<div class="container shadow-sm">
+   <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+      <ol class="breadcrumb p-3">
+         <li class="breadcrumb-item fw-bold"><a style="color: #727068" href="{% url 'facultyCourses' %}">My
+            courses</a>
+         </li>
+         <li class="breadcrumb-item fw-bold"><a style="color: #727068"
+            href="{% url 'faculty' course.code %}">{{ course.name }}</a></li>
+         <li class="breadcrumb-item active animate__animated animate__backInRight" aria-current="page">Announcement</li>
+      </ol>
+   </nav>
+</div>
+<!-- navigation links end -->
+<div class="container">
+   <div class="row justify-content-center">
+      <div class="col-md-8 shadow-lg p-3 rounded">
+         <div class="text-center">
+            <div class="fw-bold mb-3 text-start">Post Announcement</div>
+            <div class="from-group">
+               <form method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  {{ form.as_p }}
+                  <!-- submit button -->
+                  <div class="d-flex justify-content-end bg-light border p-2 rounded">
+                     <a class="btn btn-sm btn-outline-danger mx-2" href="{% url 'faculty' course.code %}">Cancel</a>
+                     <button class="btn btn-sm btn-primary" type="submit" id="submit"> <span class="mx-2">Post</span></button>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock %}

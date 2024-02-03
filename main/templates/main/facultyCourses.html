@@ -1,0 +1,61 @@
+{% extends 'index.html' %}
+{% block title %}Dashboard | Assessment360 {% endblock title %}
+{% block profile %}
+{% url 'profile' faculty.faculty_id %}
+{% endblock %}
+{% block user %}
+{{faculty.name}}
+{% endblock user %}
+{% block courses %}
+{% url 'facultyCourses' %}
+{% endblock courses %}
+{% block allCourses %}
+{% url 'courses' %}
+{% endblock %}
+{% block content %}
+<div>
+   <!-- navigation links -->
+   <div class="container shadow-sm">
+      <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+         <ol class="breadcrumb p-3">
+            <li class="breadcrumb-item fw-bold"><a class="breadcrumb-item active" aria-current="page">My Courses</a>
+            </li>
+         </ol>
+      </nav>
+   </div>
+   <!-- navigation links end -->
+   <div class="container">
+      {% if courses %}
+      <!-- course container -->
+      <div class="card_primary d-flex justify-content-center flex-wrap">
+         {% for courses in courses %}
+         <!-- individual course starts -->
+         <div class="cd card text-center my-4 mx-4 courseAnim" style="width: 30rem !important;">
+            <div class="card-header text-light">
+               Dept. of {{courses.department}}
+            </div>
+            <div class="card-body">
+               <h5 class="card-title">{{courses.department}}-{{courses.code}} : {{courses.name}}</h5>
+               <a href="{% url 'faculty' courses.code %}" class="btn btn-outline-dark px-5">Enter</a>
+            </div>
+            <div class="card-footer text-light">
+               <svg class="mb-2" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+                  <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                  <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
+                  <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+               </svg>
+               <span class="fs-5">
+               {{studentCount|get_item:courses.code}}
+               </span>
+            </div>
+         </div>
+         <!-- individual course ends -->
+         {% endfor %}
+         <!-- course container ends -->
+      </div>
+      {% else %}
+      <div class="text-center h4 text-secondary">No courses to show</div>
+      {% endif %}
+   </div>
+</div>
+{% endblock %}

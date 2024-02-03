@@ -1,0 +1,145 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %} {{ course.name }} | Assessment360 {% endblock title %}
+{% block profile %}
+{% url 'profile' student.student_id %}
+{% endblock %}
+{% block user %}
+{{student.name}}
+{% endblock user %}
+{% block courses %}
+{% url 'myCourses' %}
+{% endblock courses %}
+{% block allCourses %}
+{% url 'courses' %}
+{% endblock allCourses %}
+{% block content %}
+<div>
+   <!-- navigation links -->
+   <div class="container shadow-sm">
+      <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+         <ol class="breadcrumb p-3">
+            <li class="breadcrumb-item fw-bold"><a style="color: #727068" href="{% url 'myCourses' %}">My
+               Courses</a>
+            </li>
+            <li class="breadcrumb-item fw-bold animate__animated animate__backInRight"><a class="breadcrumb-item active"
+               aria-current="page">{{ course.name }}</a></li>
+         </ol>
+      </nav>
+   </div>
+   <!-- navigation links end -->
+   <div class="container d-flex flex-wrap flex-column">
+      <!-- course name starts -->
+      <div class="rounded p-3 m-3 shadow d-flex justify-content-between">
+         <span></span>
+         <h5 class="mt-2 fw-bold">{{course.department}}-{{course.code}} : {{course.name}}</h5>
+         <div class="dropdown">
+            <img class="dropdown-toggle" id="drop" data-bs-toggle="dropdown" aria-expanded="false" src="{% static 'images/icon/dropDown.png' %}"
+               alt="Options" height="32">
+            <ul class="dropdown-menu">
+               <li class="border-bottom">
+                  <a class="dropdown-item" href="{% url 'discussion' course.code %}">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-right-dots mx-2" viewBox="0 0 16 16">
+                        <path d="M2 1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h9.586a2 2 0 0 1 1.414.586l2 2V2a1 1 0 0 0-1-1H2zm12-1a2 2 0 0 1 2 2v12.793a.5.5 0 0 1-.854.353l-2.853-2.853a1 1 0 0 0-.707-.293H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12z"/>
+                        <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                     </svg>
+                     Discussion
+                  </a>
+               </li>
+               <li>
+                  <a class="dropdown-item" href="{% url 'myQuizzes' course.code %}">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-text mx-2" viewBox="0 0 16 16">
+                        <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+                        <path d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8zm0 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z"/>
+                     </svg>
+                     Quiz
+                  </a>
+               </li>
+            </ul>
+         </div>
+      </div>
+      <!-- course name ends -->
+      <!-- announcement section starts -->
+      <div class="rounded p-3 m-3 shadow border border-top-0 border-end-0 border-bottom-0 border-primary border-5">
+         <div class="fw-bold animate__animated animate__zoomInDown fs-5 text-center border-bottom border-1 mb-2 py-2" style="color: #727068;"><img src="{% static 'images/icon/megaphone.png' %}"
+            alt="" style="height:1.5rem;vertical-align: text-top"><span style="margin-right: 0.6rem;"></span>Announcement
+         </div>
+         <div>
+            {% for announcement in announcements %}
+            <!-- individual announcement starts -->
+            <div class="fs-6" id="annDescription{{announcement.id}}">{% autoescape off %}{{announcement.description}}{% endautoescape %}</div>
+            <div class="d-flex flex-row-reverse border-bottom border-1">
+               <div style="color:grey;" class="mb-1">
+                  {{announcement.post_date}}
+               </div>
+            </div>
+            <!-- individual announcement ends-->
+            {% empty %}
+            <p class="fs-6 text-center text-muted">No announcement has been posted</p>
+            {% endfor %}
+         </div>
+      </div>
+      <!-- announcement section ends -->
+      <!-- assignment section starts -->
+      <div class="rounded p-3 m-3 shadow border border-top-0 border-bottom-0 border-end-0 border-danger border-5 mb-2">
+         <div class="fw-bold fs-5 text-center animate__animated animate__zoomInDown border-bottom border-1 mb-2 py-2" style="color: #727068;"><img src="{% static 'images/icon/open-book.png' %}"
+            alt="" style="height:1.5rem; vertical-align: text-top"><span style="margin-right: 0.6rem;"></span>Assignment</div>
+         <div >
+            {% for assignment in assignments %}
+            <!-- individual assignment starts -->
+            <a class="fw-bold"
+               href="{% url 'assignmentPage' course.code assignment.id %}">{{assignment.title}}</a>
+            <div class="d-flex justify-content-between">
+               <p style="font-size:15px"> Due Date : {{ assignment.due_date}} </p>
+               <div  style="color:grey;">
+                  {{assignment.post_date}}
+               </div>
+            </div>
+            <!-- individual assignment ends -->
+            {% empty %}
+            <p class="text-center text-muted fs-6">No assignments given yet</p>
+            {% endfor %}
+         </div>
+         {% if assignments %}
+         <div class="text-center fs-6 text-muted d-flex flex-column border-top border-1">
+            <span class="mt-2">Showing {{ assignments.count}} of {{course.assignment_set.count}}
+            {% if assignments.count == 1 %}assignment {% else %}assignments{% endif %}
+            </span>
+            <a class="fs-6" href=" {% url 'student-assignments' course.code %} ">Show all</a>
+         </div>
+         {% endif %}
+      </div>
+      <!-- assignment section ends -->
+      <!-- course material section starts -->
+      <div class="rounded p-3 m-3 shadow border border-top-0 border-bottom-0 border-warning border-end-0 border-5" id="material">
+         <!-- section title -->
+         <div class="fw-bold animate__animated animate__zoomInDown fs-5 text-center border-bottom border-1 mb-2 py-2" style="color: #727068;"><img src="{% static 'images/icon/folder.png' %}"
+            alt="" style="height:1.5rem;vertical-align: text-top"><span style="margin-right: 0.6rem;"></span>Course Material</div>
+         <!-- section title ends -->
+         <div>
+            {% for material in materials  %}
+            <!-- individual material starts -->
+            <p>{% autoescape off %}{{ material.description }}{% endautoescape %}</p>
+            <div class="d-flex justify-content-between text-break">
+               {% if material.file %}
+               <a class="fw-bold" href="{{ material.file.url }}"><span style="color:#9400d3" id="materialName">File : {{material.file.name}}</span></a><br>
+               {% endif %}
+               <div class="text-muted">
+                  {{material.post_date}}
+               </div>
+            </div>
+            {% empty %}
+            <p class="text-center text-muted fs-6">Course materials not available</p>
+            {% endfor %}
+            <!-- individual material ends -->
+         </div>
+      </div>
+      <!-- course material section ends -->
+   </div>
+</div>
+<script>
+   var materialName = document.getElementById("materialName").innerHTML;
+   var materialName = materialName.replace("materials/", "");
+   document.getElementById("materialName").innerHTML = materialName;
+</script>
+{% endblock %}
