@@ -1,0 +1,98 @@
+{% extends 'index.html' %}
+{% block title %}Quizzes | {{ course.name }} {% endblock title %}
+{% block profile %}
+{% url 'profile' faculty.faculty_id %}
+{% endblock %}
+{% block user %}
+{{faculty.name}}
+{% endblock user %}
+{% block courses %}
+{% url 'facultyCourses' %}
+{% endblock courses %}
+{% block allCourses %}
+{% url 'courses' %}
+{% endblock %} 
+{% block content %}
+{% comment %} alert {% endcomment %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{% if 'success' in message.tags %}success{% else %}danger{% endif %} alert-dismissible fade show" role="alert">
+   <span> {{ message }}</span>
+   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+{% endif %}
+{% comment %} alert ends {% endcomment %}
+<!-- navigation links -->
+<div class="container shadow-sm">
+   <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+      <ol class="breadcrumb p-3">
+         <li class="breadcrumb-item fw-bold"><a style="color: rgb(10, 10, 48)" href="{% url 'facultyCourses' %}">My
+            Courses</a>
+         </li>
+         <li class="breadcrumb-item fw-bold"><a style="color: rgb(10, 10, 48)"
+            href="{% url 'faculty' course.code %}">{{ course.name }}</a></li>
+         <li class="breadcrumb-item active animate__animated animate__backInRight" aria-current="page">Quizzes</li>
+      </ol>
+   </nav>
+</div>
+<!-- navigation links end -->
+<div class="container rounded border">
+   <div class="py-1 m-2 rounded d-flex justify-content-between flex-wrap">
+      <span></span>
+      <h5 class="fw-bold text-center">Quizzes -  {{ course.name}}</h5>
+      <div>
+         <a class="btn btn-sm btn-success px-3" href="{% url 'quiz' course.code %}">New</a>
+      </div>
+   </div>
+</div>
+<div class="container rounded animate__animated animate__jackInTheBox">
+   {% if quizzes %}
+   <div class="table-responsive">
+      <table class="table my-3 text-center" style="white-space: nowrap;">
+         <thead class="table-dark">
+            <tr>
+               <th scope="col">SL</th>
+               <th scope="col">Quiz</th>
+               <th scope="col">Starts</th>
+               <th scope="col">Ends</th>
+               <th scope="col">Questions</th>
+               <th scope="col">Action</th>
+            </tr>
+         </thead>
+         <tbody class="table-group-divider">
+            {% for quiz in quizzes %}
+            <tr>
+               <th scope="row">{{ forloop.counter }}</th>
+               <td>
+                  <a class="fw-bold" {% if quiz.started %} style="color:#004481" {% endif %} href="{% url 'quizSummary' course.code quiz.id %}">{{ quiz.title}}</a>
+               </td>
+               <td>{{ quiz.starts}} </td>
+               <td>{{ quiz.ends}}</td>
+               <td>{{ quiz.total_questions}}</td>
+               <td>
+                  {% if quiz.started == 0 %}
+                  <a class="btn btn-sm btn-primary" href="{% url 'addQuestion' course.code quiz.id %}">Add question</a>
+                  {% else %}
+                  <button disabled class="btn btn-sm btn-primary">Add question</button>
+                  {% endif %}
+               </td>
+            </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+   </div>
+   {% else %}
+   <div >
+      <p class="text-center fw-bold pb-3">No quizzes found</p>
+   </div>
+   {% endif %}
+</div>
+<script>
+   $(document).ready(function(){
+     setTimeout(function(){
+       $(".alert").alert('close');
+     },4000);
+   });
+</script>
+{% endblock %}
