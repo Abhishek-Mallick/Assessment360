@@ -73,25 +73,18 @@
 
 | Method   | Endpoint             | Description                | Query                                   | Headers                         | Request Body                       | Response Body                                |
 | -------- | -------------------- | -------------------------- | --------------------------------------- | ------------------------------- | ---------------------------------- | -------------------------------------------- |
-| `GET`    | `/student/assignment`         | Get all Assignemnts of the Student of all courses  | priority, status, due_date, page, limit | Authorization: Bearer JWT token | N/A                                | JSON: {docs,totalDocs,page,limit,totalPages} |
-| `POST`   | `/student/update-assign`         | Create a new Assignment for Student under a Course | N/A                                     | Authorization: Bearer JWT token | JSON: {title,description,due_date,pdf_location} | JSON: {task,message}                         |
-| `PATCH`  | `/api/task/:task_id` | Update task for Student       | N/A                                     | Authorization: student_id | JSON: {status,due_date}            | JSON: {task,message}                         |
-| `DELETE` | `/api/task/:task_id` | Soft Delete task for Student  | N/A                                     | Authorization: Bearer JWT token | N/A                                | JSON: {task,message}                         |
+| `GET`    | `/student/assignment`         | Get all Assignemnts of the Student of all courses  | priority, status, due_date, page, limit | Authorization: student_id | N/A                                | JSON: {docs,totalDocs,page,limit,totalPages} |
+| `POST`   | `/student/update-assign`         | Create a new Assignment for Student under a Course | N/A                                     | Authorization: student_id | JSON: {title,description,due_date,pdf_location} | JSON: {task,assign_id}                         |
+| `DELETE` | `/api/task/:task_id` | Soft Delete Assignment for Student  | N/A                                     | Authorization: student_id | N/A                                | JSON: {task,assign_id}                         |
 
 ### Sub Tasks
 
 | Method   | Endpoint                 | Description                    | Query   | Headers                         | Request Body    | Response Body           |
 | -------- | ------------------------ | ------------------------------ | ------- | ------------------------------- | --------------- | ----------------------- |
-| `GET`    | `/discussion`         | Get all Discussion of the User  | task_id | Authorization: Bearer JWT token | N/A             | JSON: {subTasks}        |
-| `POST`   | `/discussion/update`         | Create a new message for Student under Course | N/A     | Authorization: Bearer JWT token | JSON: {task_id} | JSON: {subTask,message} |
-| `DELETE` | `/discussion/:diss_id` | Soft Delete Discussion for student  | N/A     | Authorization: Bearer JWT token | N/A             | JSON: {subTask,message} |
-
-### Cron Jobs
-
-| Name                     | Function Name     | Description                                                                                        |
-| ------------------------ | ----------------- | -------------------------------------------------------------------------------------------------- |
-| Task Priority            | `priorityCronJob` | It runs at midnight and checks the date and updates the priority accordingly                       |
-| Call User if Task is Due | `priorityCronJob` | It runs after every hour and checks if task is due for some user calls the user and gives reminder |
+| `GET`    | `/discussion`         | Get all Discussion of the User  | task_id | Authorization: stud_id | N/A             | JSON: {subTasks}        |
+| `GET`    | `/tests`         | Get all tests allocated to the User  | stud_id | Authorization: stud_id | N/A             | JSON: {subTasks}        |
+| `POST`   | `/tests/update`         | Create a new submit for test by Student under Course | N/A     | Authorization: stud_id | JSON: {task_id} | JSON: {subTask,test_id} |
+| `DELETE` | `/tests/:test_id` | Delete test for student by faculty | stud_id    | Authorization: stud_id | N/A             | JSON: {subTask,test_id} |
 
 ## License
 
