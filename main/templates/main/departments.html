@@ -1,0 +1,71 @@
+{% extends 'index.html' %}
+{% block title %} Departments | Assessment360 {% endblock title %}
+{% block profile %}
+{% if faculty  %} {% url 'profile' faculty.faculty_id %}
+{% else %} {% url 'profile' student.student_id %}
+{% endif %}
+{% endblock %}
+{% block user %}
+{% if faculty %} {{faculty.name}}
+{% else %} {{student.name}}
+{% endif %}
+{% endblock user %}
+{% block courses %}
+{% url 'myCourses' %}
+{% endblock courses %}
+{% block allCourses %}
+{% url 'courses' %}
+{% endblock %}
+{% block departments %}
+{% url 'departments' %}
+{% endblock %}
+{% block content %}
+<div class="container">
+   <!-- navigation links -->
+   <div class="container shadow-sm">
+      <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+         <ol class="breadcrumb p-3">
+            <li class="breadcrumb-item active animate__animated animate__backInRight" aria-current="page">All Departments</li>
+         </ol>
+      </nav>
+   </div>
+   <!-- navigation links end -->
+      {% if deps %}
+      <span class="text-muted fst-italic">Showing all departments</span>
+      <table class="table align-middle mb-0 bg-white text-center my-3 shadow rounded">
+         <thead class="bg-light">
+            <tr>
+               <th>Name</th>
+               <th>Dept. ID</th>
+               <th>No. of Students</th>
+               <th>Total Faculty</th>
+               <th>Total Courses</th>
+            </tr>
+         </thead>
+         <tbody>
+            {% for dep in deps%}
+            <tr>
+               <td>
+               {{dep.name}}
+               </td>
+               <td>
+                  {{dep.department_id}}
+               </td>
+               <td>
+                  {{dep.student_count}}
+               </td>
+               <td>
+                  {{dep.faculty_count}}
+               </td>
+               <td>
+                  {{dep.course_count}}
+               </td>
+            </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+      {% else %}
+   <div class="text-center h4 text-secondary">No Departments to show</div>
+   {% endif %}
+</div>
+{% endblock  %}

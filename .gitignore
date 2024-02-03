@@ -4,6 +4,8 @@
 client/node_modules
 server/node_modules
 
+README_update.md
+
 venv/
 /.pnp
 .pnp.js

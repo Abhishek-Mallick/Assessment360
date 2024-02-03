@@ -1,0 +1,141 @@
+{% extends 'index.html' %}
+{% block title %} {{ assignment.title }} - Assessment360 {% endblock title %}
+{% block profile %}
+{% url 'profile' student.student_id %}
+{% endblock %}
+{% block user %}
+{{student.name}}
+{% endblock user %}
+{% block allCourses %}
+{% url 'courses' %}
+{% endblock %}
+{% block courses %}
+{% url 'myCourses' %}
+{% endblock courses %}
+{% block content %}
+<!-- navigation links -->
+<div class="container shadow-sm">
+   <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+      <ol class="breadcrumb p-3">
+         <li class="breadcrumb-item fw-bold"><a style="color: rgb(10, 10, 48)" href="{% url 'myCourses' %}">My
+            Courses</a>
+         </li>
+         <li class="breadcrumb-item fw-bold"><a style="color: rgb(10, 10, 48)"
+            href="{% url 'course' course.code %}">{{ course.name }}</a></li>
+         <li class="breadcrumb-item active animate__animated animate__backInRight" aria-current="page">Assignment <span>
+            ({{ assignment.title }})</span> 
+         </li>
+      </ol>
+   </nav>
+</div>
+<!-- navigation links end -->
+<div class="container shadow-sm rounded p-3">
+   <div class="assignment-contex assignment-info" id="links">
+      <h4>{{assignment.title}}</h4>
+      <div class="p-2 text-break">{% autoescape off %}{{assignment.description}}{% endautoescape %}</div>
+      <h6 class="p-2 fw-bold">Deadline: <span class="px-2 text-danger"> {{assignment.post_date}} </span></h6>
+      <label class="p-2 fw-bold" for="">Total Marks: </label>
+      <span style="color: black;" class="p-2 fw-bold">{{assignment.marks}}</span><br>
+      {% if assignment.file %}
+      <label class="p-2 fw-bold" for="">Attachment: &nbsp <a
+         class="px-2 py-1 text-success bg-success bg-opacity-10 border border-success border-opacity-10 rounded-2"
+         style="text-decoration: none; font-size: smaller !important" href="{{assignment.file.url}}"> &nbsp View
+      </a> &nbsp or &nbsp <a
+         class="fs-6 px-2 py-1 text-primary bg-primary bg-opacity-10 border border-priamry border-opacity-10 rounded-2"
+         style="text-decoration: none; font-size: smaller !important" download href=" {{assignment.file.url}}">
+      Download</a></label><br>
+      {% endif %}
+      {% if submission.status %}
+      <label class="p-2 fw-bold" for="">Status: </label>
+      <span class="p-2 fw-bold text-success">{{submission.status}} {{submission.time_difference}} early!</span><br>
+      {% else %}
+      <label class="p-2 fw-bold" for="">Status: </label>
+      <span style="color: red;" class="p-2 fw-bold">Pending!</span><br>
+      {% endif %}
+      {% if submission.marks %}
+      <label class="p-2 fw-bold" for="">Grade: </label>
+      <span class="p-2 fw-bold" id="grade">{{submission.marks}} / {{assignment.marks}}</span><br>
+      {% else %}
+      <label class="p-2 fw-bold" for="">Grade: </label>
+      {% if submission.marks == 0.00 %}
+      <span class="p-2 fw-bold">0.00 / {{assignment.marks}} </span><br>
+      {% else %}
+      <span class="p-2 fw-bold">Not published</span><br>
+      {% endif %}
+      {% endif %}
+      {% if submission.file %}
+      <label class="p-2 fw-bold" for=""> Your Submission : </label>
+      <a style="text-decoration:none" download href="{{submission.file.url}}">{{submission.file_name}}</a>
+      {% endif %}
+      <label id="timer" class="p-2 fw-bold" for="">Time Remaining : <span id="timeRemain" class="fw-semibold"></span></label><br>
+   </div>
+   {% if time < assignment.deadline and not submission.file %}
+   <form action="{% url 'addSubmission' course.code assignment.id %}" method="POST" enctype="multipart/form-data"
+      id="gradeForm" name="gradeForm">
+      {% csrf_token %}
+      <div id="fileSubmit">
+         <div class="input-group mb-3 p-2">
+            <input type="file" class="form-control shadow-sm rounded" id="file" name="file" required>
+         </div>
+         <p class="text-center" id="fileError"></p>
+         <div class="btn-container d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary px-5 shadow-sm rounded">Submit</button><span
+               class="p-2"></span>
+         </div>
+      </div>
+   </form>
+   {% endif %}
+</div>
+<script>
+   var time = new Date('{{ assignment.deadline|date:"D, d M Y H:i:s"}}').getTime();
+   var rand = setInterval(function () {
+       var now = new Date().getTime();
+       var difference = time - now;
+       var days = Math.floor(difference / (1000 * 60 * 60 * 24));
+       var hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+       var minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+       var seconds = Math.floor((difference % (1000 * 60)) / 1000);
+   
+       document.getElementById("timeRemain").innerHTML = days + " days " + hours + " hours " +
+           minutes + " minutes " + seconds + " seconds ";
+   
+       if (difference < 0) {
+           clearInterval(rand);
+           document.getElementById("timeRemain").innerHTML = "Closed!";
+           document.getElementById("timeRemain").style.color = "red";
+           document.getElementById("fileSubmit").style.display = 'none';
+       }
+   }, 1000); 
+   {% if submission.file %}
+   $(document).ready(function(){
+      $('#timer').hide(); 
+   }
+   );
+   {% endif %} 
+   
+   let assignment = document.querySelectorAll('.assignment-info');
+   anime({
+      targets: assignment,
+      opacity: [0, 1],
+      easing: 'easeInOutQuad',
+      duration: 1500,
+      delay: function (el, i) {
+         return i * 250;
+      }
+   });
+   
+   // File Validation
+   let fileError = document.getElementById('fileError');
+   let file = document.getElementById('file');
+   file.addEventListener('change', function () {
+      if (file.files[0].size > 10000000) {
+         fileError.innerHTML = 'File size must be less than 10MB';
+         fileError.style.color = 'red';
+         fileError.style.fontWeight = 'bold';
+         file.value = '';
+      } else {
+         fileError.innerHTML = '';
+      }
+   });
+</script>
+{% endblock %}
