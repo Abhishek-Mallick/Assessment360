@@ -1,7 +1,7 @@
 ## Assessment360
 
 
-### To be deployed live at : pythonanywhere.com
+### To be deployed live at : [Assessment360](https://assessment360.pythonanywhere.com/)
 
 ## Installation
 
@@ -87,9 +87,10 @@
 | `DELETE` | `/tests/:test_id` | Delete test for student by faculty | stud_id    | Authorization: stud_id | N/A             | JSON: {subTask,test_id} |
 
 ## Schema Architecture
+#### PS: Ignore the bad handwritting
 <p align="center">
 <img src="https://github.com/Abhishek-Mallick/Assessment360/assets/106394426/16cbc45b-e091-482f-aeb2-13096a633c17" alt="drawing" align= "center" width="600"/>
 </p>
-## License
 
+## License
 [MIT](https://choosealicense.com/licenses/mit/)
