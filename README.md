@@ -60,6 +60,15 @@
  python manage.py migrate 
  python manage.py runserver
 ```
+
+## Default Logins and Passwords
+
+| Type | UserId             | Password         |
+| ------ | -------------------- | ------------------- |
+| `Faculty` | `202` | pass@123 |
+| `Student`  | `402` | pass@123    |
+
+
 ## Endpoints
 
 ### Admin (super_user)
@@ -85,6 +94,7 @@
 | `GET`    | `/tests`         | Get all tests allocated to the User  | stud_id | Authorization: stud_id | N/A             | JSON: {subTasks}        |
 | `POST`   | `/tests/update`         | Create a new submit for test by Student under Course | N/A     | Authorization: stud_id | JSON: {task_id} | JSON: {subTask,test_id} |
 | `DELETE` | `/tests/:test_id` | Delete test for student by faculty | stud_id    | Authorization: stud_id | N/A             | JSON: {subTask,test_id} |
+
 
 ## Schema Architecture
 #### PS: Ignore the bad handwritting
@@ -114,3 +124,6 @@
 ![Screenshot 2024-02-04 105123](https://github.com/Abhishek-Mallick/Assessment360/assets/106394426/8189e9f4-3806-4443-a562-7a6e87ef8694)
 
 ![Screenshot 2024-02-04 105454](https://github.com/Abhishek-Mallick/Assessment360/assets/106394426/f76a7d32-74a7-497a-a16d-46d3e2e7e216)
+
+![Screenshot 2024-02-04 110142](https://github.com/Abhishek-Mallick/Assessment360/assets/106394426/978fd889-6e19-441e-bbe6-dd22a7217752)
+
