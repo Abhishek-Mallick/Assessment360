@@ -1,7 +1,9 @@
 ## Assessment360
+#### Submission for Central India's Largest Hackathon '24
+#### ![63b957a77c0c1_fes](https://github.com/Abhishek-Mallick/Assessment360/assets/106394426/1e7c37a6-ff8e-45e4-ad59-630f73c4038a) E-Summit'24
+#### ![63b957e2059fc_org](https://github.com/Abhishek-Mallick/Assessment360/assets/106394426/c63f1769-b522-4737-8076-bed2c40455e9) National Institute of Technology (NIT), Bhopal
 
-
-### To be deployed live at : [Assessment360](https://assessment360.pythonanywhere.com/)
+### Deployed live at : [Assessment360](https://assessment360.pythonanywhere.com/)
 
 ## Installation
 
