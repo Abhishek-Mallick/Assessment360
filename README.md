@@ -92,5 +92,11 @@
 <img src="https://github.com/Abhishek-Mallick/Assessment360/assets/106394426/16cbc45b-e091-482f-aeb2-13096a633c17" alt="drawing" align= "center" width="600"/>
 </p>
 
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
+## Webapp Preview
+![img1](https://github.com/Abhishek-Mallick/Assessment360/assets/83288891/ae18c965-8f20-4d54-98ed-0fae676c58c9)
+
+![img2](https://github.com/Abhishek-Mallick/Assessment360/assets/83288891/1f2f6122-66ca-459a-ac5b-b1f371a1e940)
+
+![img3](https://github.com/Abhishek-Mallick/Assessment360/assets/83288891/74588dce-b750-4147-9493-a8d0035db8a3)
+
+![img4](https://github.com/Abhishek-Mallick/Assessment360/assets/83288891/7b96fb6c-2170-48de-9f22-6865951803ea)
