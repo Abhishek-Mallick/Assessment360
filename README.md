@@ -97,12 +97,13 @@
 | `POST`   | `/tests/update`         | Create a new submit for test by Student under Course | N/A     | Authorization: stud_id | JSON: {task_id} | JSON: {subTask,test_id} |
 | `DELETE` | `/tests/:test_id` | Delete test for student by faculty | stud_id    | Authorization: stud_id | N/A             | JSON: {subTask,test_id} |
 
-
+<!---
 ## Schema Architecture
 #### PS: Ignore the bad handwritting
 <p align="center">
 <img src="https://github.com/Abhishek-Mallick/Assessment360/assets/106394426/16cbc45b-e091-482f-aeb2-13096a633c17" alt="drawing" align= "center" width="600"/>
 </p>
+-->
 
 ## Webapp Preview
 ![img1](https://github.com/Abhishek-Mallick/Assessment360/assets/83288891/ae18c965-8f20-4d54-98ed-0fae676c58c9)
