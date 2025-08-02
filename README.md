@@ -127,19 +127,3 @@ Assessment360 aims to revolutionize assignment management by making it simple, e
 ![Screenshot 2024-02-04 105454](https://github.com/Abhishek-Mallick/Assessment360/assets/106394426/f76a7d32-74a7-497a-a16d-46d3e2e7e216)
 
 ![Screenshot 2024-02-04 110142](https://github.com/Abhishek-Mallick/Assessment360/assets/106394426/978fd889-6e19-441e-bbe6-dd22a7217752)
-
-## Architecture Diagram
-![Architecture](./architech-diagram/architecture.svg)
-
----
-*Generated with [Architech](https://architech.dev)* 
-
- *   **User Management:** Handles user accounts, profiles, and authentication.
-*   **Post Management:** Enables creation, retrieval, and management of user posts.
-*   **Personalized Feeds:** Generates and serves personalized user feeds.
-*   **Notification System:** Sends push, email, and in-app notifications.
-*   **Media Storage:** Stores user-uploaded images and videos.
-*   **Search Functionality:** Provides search capabilities for users, posts, and topics.
-*   **Scalability:** Horizontal scaling for various services to handle increased load.
-*   **Analytics:** Collects and analyzes user activity data for insights.
-*   **API Gateway:** Centralized entry point for request handling, authentication, routing, and rate limiting.
