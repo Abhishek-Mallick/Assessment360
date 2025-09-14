@@ -127,3 +127,18 @@ Assessment360 aims to revolutionize assignment management by making it simple, e
 ![Screenshot 2024-02-04 105454](https://github.com/Abhishek-Mallick/Assessment360/assets/106394426/f76a7d32-74a7-497a-a16d-46d3e2e7e216)
 
 ![Screenshot 2024-02-04 110142](https://github.com/Abhishek-Mallick/Assessment360/assets/106394426/978fd889-6e19-441e-bbe6-dd22a7217752)
+
+## Architecture Diagram
+![Architecture](./assets/architech/architecture.svg)
+
+---
+
+ *   **Infrastructure as Code:** Define and manage DevLake configurations using Terraform.
+*   **GitHub Integration:** Automate the configuration of GitHub connections and scopes within DevLake.
+*   **Bitbucket Server Integration:** Automate the configuration of Bitbucket Server connections and scopes within DevLake.
+*   **DevLake API Management:** Simplified interaction with the DevLake API for resource management.
+*   **Connection Management:** Automate the creation, update, and deletion of connections within DevLake.
+*   **Scope Management:** Define and manage data scopes (e.g., repositories) for data collection in DevLake.
+*   **Configuration Examples:** Provides ready-to-use Terraform examples for common DevLake configuration scenarios. 
+
+*Made with [Architech](https://architech.dev)*
